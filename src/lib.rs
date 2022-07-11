@@ -36,14 +36,13 @@ pub fn average(a: u32, b: u32) -> f32 {
 // The factorial of a number is the product of all its previous numbers
 // Eg: factorial(4) = 1 * 2 * 3 * 4 = 24
 pub fn factorial(n: u32) -> u32 {
-    if n == 0 { 
-        return 0; 
-    }
     let mut product: u32 = 1;
     for num in 1..=n {
         product = product * num;
     }
     return product;
+    // BETTER WAY
+    // return (1..=n).product();
 }
 
 // Return whether the given number is a prime number
@@ -112,27 +111,37 @@ pub fn triplicate_number(n: u32) -> (u32, u32, u32) {
 // Build a tuple of 3 members that are all equal to the given string
 // Eg: triplicate_string(String::from("a")) == (String::from("a"), String::from("a"), String::from("a"))
 pub fn triplicate_string(s: String) -> (String, String, String) {
-    return (String::from(&s), String::from(&s), String::from(&s))
+    return (
+        String::from(&s), 
+        String::from(&s), 
+        String::from(&s),
+    )
 }
 
 /// Arrays
 
-// Return an array of 10 elements, and fill it with the given number
+// Return an array of 5 elements, and fill it with the given number
 // Eg: build_array(2) == [2, 2, 2, 2, 2]
 pub fn build_array(n: u32) -> [u32; 5] {
-    unimplemented!()
+    return [n; 5];
 }
 
 // Return the nth element of the array
 // Eg: nth_element([2, 5, 3, 8, 1], 2) == 3
 pub fn nth_element(array: [u32; 5], n: usize) -> u32 {
-    unimplemented!()
+    return array[n];
 }
 
 // Return the maximum number in the given array
 // Eg: max_in_array([2, 5, 3, 8, 1]) == 8
 pub fn max_in_array(array: [u32; 5]) -> u32 {
-    unimplemented!()
+    let mut max: u32 = array[0];
+    for num in array.iter() {
+        if num > &max {
+            max = *num;
+        }
+    }
+    return max;
 }
 
 // Returns true if the given string literal is either "foo" or "bar"
@@ -140,14 +149,23 @@ pub fn max_in_array(array: [u32; 5]) -> u32 {
 // Eg: is_foo_or_bar("bar") == true
 // Eg: is_foo_or_bar("another string") == false
 pub fn is_foo_or_bar(s: &str) -> bool {
-    unimplemented!()
+    if s == "foo" || s == "bar" {
+        return true;
+    }
+    return false;
 }
 
 // Returns true if the given string literal contains the given character
 // Eg: contains_char("foo", 'f') == true
 // Eg: contains_char("foo", 's') == false
 pub fn contains_char(s: &str, character: char) -> bool {
-    unimplemented!()
+    let input_string = String::from(s);
+    for c in input_string.chars() {
+        if c == character {
+            return true;
+        }
+    }
+    return false;
 }
 
 // Returns true if the given string literal consists of just its first half repeteated twice
@@ -157,5 +175,13 @@ pub fn contains_char(s: &str, character: char) -> bool {
 // Eg: is_first_half_repeated("fofoo") == false
 // Eg: is_first_half_repeated("foo") == false
 pub fn is_first_half_repeated(s: &str) -> bool {
-    unimplemented!()
+    // check for uneven char sizes
+    let len: usize = s.len();
+    if len % 2 != 0 {
+        return false;
+    }
+    // split into half
+    let left: &str = &s[0..len/2];
+    let right: &str = &s[len/2..len];
+    return left == right;
 }
