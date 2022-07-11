@@ -7,38 +7,58 @@
 
 // Return the sum of a and b
 pub fn sum(a: u32, b: u32) -> u32 {
-    unimplemented!()
+    return a + b;
 }
 
 // Return the multiplication of a and b
 pub fn multiply(a: u32, b: u32) -> u32 {
-    unimplemented!()
+   return a * b;
 }
 
 // Return the maximum number between a and b
 // Eg: max(3, 4) = 4
 pub fn max(a: u32, b: u32) -> u32 {
-    unimplemented!()
+    if a > b {
+        return a;
+    } else {
+        return b;
+    }
 }
 
 // Return the average for the two given numbers
 // Eg: average(2, 3) = 2.5
 pub fn average(a: u32, b: u32) -> f32 {
-    unimplemented!()
+    let n: f32 = 2.0;
+    return (a + b) as f32 / n;
 }
 
 // Return the factorial for the given number
 // The factorial of a number is the product of all its previous numbers
 // Eg: factorial(4) = 1 * 2 * 3 * 4 = 24
 pub fn factorial(n: u32) -> u32 {
-    unimplemented!()
+    if n == 0 { 
+        return 0; 
+    }
+    let mut product: u32 = 1;
+    for num in 1..=n {
+        product = product * num;
+    }
+    return product;
 }
 
 // Return whether the given number is a prime number
 // Eg: is_prime(7) = true
 // Eg: is_prime(8) = false
 pub fn is_prime(n: u32) -> bool {
-    unimplemented!()
+    if n <= 1 {
+        return false;
+    }
+    for i in 2..n { // do not include the final number
+        if n % i == 0 {
+            return false;
+        }
+    }
+    return true;
 }
 
 // Return the nth prime, assuming that the first prime number is 2
@@ -46,7 +66,20 @@ pub fn is_prime(n: u32) -> bool {
 // Eg: nth_prime(2) = 3
 // Eg: nth_prime(3) = 5
 pub fn nth_prime(n: u32) -> u32 {
-    unimplemented!()
+    if n > 1000 {
+        panic!("I'm gonna stop you right here... Don't overuse my memory, please!")
+    }
+    let mut prime_count: u32 = 0;
+    let mut current_num: u32 = 2;
+    let mut current_prime: u32 = 0;
+    while prime_count < n {
+        if is_prime(current_num) {
+            prime_count += 1;
+            current_prime = current_num;
+        }
+        current_num += 1;
+    }
+    return current_prime;
 }
 
 /**
