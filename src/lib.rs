@@ -52,7 +52,7 @@ pub fn is_prime(n: u32) -> bool {
     if n <= 1 {
         return false;
     }
-    for i in 2..n { // do not include the final number
+    for i in 2..n { // does not include the final number
         if n % i == 0 {
             return false;
         }
