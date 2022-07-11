@@ -93,25 +93,26 @@ pub fn nth_prime(n: u32) -> u32 {
 
 // Return the first
 pub fn return_first_member(tuple: (u32, u32)) -> u32 {
-    unimplemented!()
+    return tuple.0;
 }
 
 // Return the sum of all the members of the tuple
 // Eg: sum((1, 2, 3)) == 6
 pub fn sum_members(tuple: (u32, u32, u32)) -> u32 {
-    unimplemented!()
+    return tuple.0 + tuple.1 + tuple.2;
 }
 
 // Build a tuple of 3 members that are all equal to the given number
 // Eg: triplicate_number(1) == (1, 1, 1)
 pub fn triplicate_number(n: u32) -> (u32, u32, u32) {
-    unimplemented!()
+    let tuple: (u32, u32, u32) = (n, n, n);
+    return tuple;
 }
 
 // Build a tuple of 3 members that are all equal to the given string
 // Eg: triplicate_string(String::from("a")) == (String::from("a"), String::from("a"), String::from("a"))
 pub fn triplicate_string(s: String) -> (String, String, String) {
-    unimplemented!()
+    return (String::from(&s), String::from(&s), String::from(&s))
 }
 
 /// Arrays
